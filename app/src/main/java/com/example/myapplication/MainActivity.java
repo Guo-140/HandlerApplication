@@ -12,6 +12,7 @@ import com.example.myapplication.handler.Message;
 public class MainActivity extends BaseActivity {
     public static final int WHAT_1 = 1;
     public static final int WHAT_2 = 2;
+    public static final int WHAT_3 = 3;
     @Override
     protected void init() {
         /** 创建，启动 消息处理线程  **/
@@ -28,6 +29,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case WHAT_2:
                         append(WHAT_2 + ": " + System.currentTimeMillis());
+                        break;
+                    case WHAT_3:
+                        append(WHAT_3 + ": " + System.currentTimeMillis());
                         break;
                     default:
                         break;
@@ -48,6 +52,12 @@ public class MainActivity extends BaseActivity {
             append("");
             Message msg1 = h1.obtainMessage();
             msg1.what = WHAT_2;
+            h1.sendMessage(msg1);
+        });
+        createBtn("send 3", view -> {
+            append("");
+            Message msg1 = h1.obtainMessage();
+            msg1.what = WHAT_3;
             h1.sendMessage(msg1);
         });
     }
